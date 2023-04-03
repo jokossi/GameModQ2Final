@@ -848,10 +848,11 @@ void Weapon_Blaster_Fire (edict_t *ent)
 {
 	int		damage;
 
+	//Changed the damage values to be more op
 	if (deathmatch->value)
-		damage = 15;
+		damage = 1500;
 	else
-		damage = 10;
+		damage = 1000;
 	Blaster_Fire (ent, vec3_origin, damage, false, EF_BLASTER);
 	ent->client->ps.gunframe++;
 }
@@ -862,6 +863,8 @@ void Weapon_Blaster (edict_t *ent)
 	static int	fire_frames[]	= {5, 0};
 
 	Weapon_Generic (ent, 4, 8, 52, 55, pause_frames, fire_frames, Weapon_Blaster_Fire);
+	Weapon_Generic(ent, 4, 12, 50, 54, pause_frames, fire_frames, Weapon_RocketLauncher_Fire);
+
 }
 
 
@@ -900,10 +903,11 @@ void Weapon_HyperBlaster_Fire (edict_t *ent)
 				effect = EF_HYPERBLASTER;
 			else
 				effect = 0;
+			//Adjusted the hyperblaster damage to see if it would have any effect
 			if (deathmatch->value)
-				damage = 15;
+				damage = 150;
 			else
-				damage = 20;
+				damage = 200;
 			Blaster_Fire (ent, offset, damage, true, effect);
 			if (! ( (int)dmflags->value & DF_INFINITE_AMMO ) )
 				ent->client->pers.inventory[ent->client->ammo_index]--;
@@ -1186,8 +1190,10 @@ void weapon_shotgun_fire (edict_t *ent)
 	vec3_t		start;
 	vec3_t		forward, right;
 	vec3_t		offset;
-	int			damage = 4;
-	int			kick = 8;
+
+	//Adjusted the damage to make it OP
+	int			damage = 42069;
+	int			kick = 69420;
 
 	if (ent->client->ps.gunframe == 9)
 	{
@@ -1242,8 +1248,10 @@ void weapon_supershotgun_fire (edict_t *ent)
 	vec3_t		forward, right;
 	vec3_t		offset;
 	vec3_t		v;
-	int			damage = 6;
-	int			kick = 12;
+
+	//Making the damage and kick OP
+	int			damage = 69420;
+	int			kick = 42069;
 
 	AngleVectors (ent->client->v_angle, forward, right, NULL);
 
