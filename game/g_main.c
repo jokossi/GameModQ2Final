@@ -86,6 +86,8 @@ void ReadLevel (char *filename);
 void InitGame (void);
 void G_RunFrame (void);
 
+void HUD_DrawInformation(void);
+
 
 //===================================================================
 

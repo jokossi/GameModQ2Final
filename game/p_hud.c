@@ -316,11 +316,11 @@ void HelpComputer (edict_t *ent)
 	// send the layout
 	Com_sprintf (string, sizeof(string),
 		"xv 32 yv 8 picn help "			// background
-		"xv 202 yv 12 string2 \"%s\" "		// skill
-		"xv 0 yv 24 cstring2 \"%s\" "		// level name
-		"xv 0 yv 54 cstring2 \"%s\" "		// help 1
-		"xv 0 yv 110 cstring2 \"%s\" "		// help 2
-		"xv 50 yv 164 string2 \" kills     goals    secrets\" "
+		"xv 202 yv 12 string2 \"How to play the mod\" "		// skill
+		"xv 0 yv 24 cstring2 \"Use the shift key to boost\" "		// level name
+		"xv 0 yv 54 cstring2 \"Press the Jump Button Twice to homing attack\" "		// help 1
+		"xv 0 yv 110 cstring2 \"Shoot different parts of the world to get powerup items\" "		// help 2
+		"xv 50 yv 164 string2 \" More Details in the readme file\" "
 		"xv 50 yv 172 string2 \"%3i/%3i     %i/%i       %i/%i\" ", 
 		sk,
 		level.level_name,
