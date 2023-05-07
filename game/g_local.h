@@ -292,6 +292,11 @@ typedef struct
 
 	qboolean	autosaved;
 } game_locals_t;
+/*typedef struct {
+	// ...
+	vec3_t cameraOffset; // New variable to store camera offset
+	// ...
+} gclient_t;*/
 
 
 //

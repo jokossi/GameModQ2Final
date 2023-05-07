@@ -22,7 +22,11 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include "client.h"
 
 cvar_t	*cl_nodelta;
-
+//Mod
+cvar_t* cl_thirdperson;
+cvar_t* cl_thirdperson_distance;
+cvar_t* cl_thirdperson_height;
+//Mod
 extern	unsigned	sys_frame_time;
 unsigned	frame_msec;
 unsigned	old_sys_frame_time;
@@ -441,6 +445,11 @@ void CL_InitInput (void)
 	Cmd_AddCommand ("-klook", IN_KLookUp);
 
 	cl_nodelta = Cvar_Get ("cl_nodelta", "0", 0);
+	//Mod
+	cl_thirdperson = Cvar_Get("cl_thirdperson", "0", CVAR_ARCHIVE);
+	cl_thirdperson_distance = Cvar_Get("cl_thirdperson_distance", "100", CVAR_ARCHIVE);
+	cl_thirdperson_height = Cvar_Get("cl_thirdperson_height", "0", CVAR_ARCHIVE);
+	//Mod
 }
 
 

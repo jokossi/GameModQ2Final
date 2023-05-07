@@ -19,7 +19,11 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 */
 // r_main.c
 #include "gl_local.h"
-
+//Mod
+cvar_t* cl_thirdperson;
+cvar_t* cl_thirdperson_distance;
+cvar_t* cl_thirdperson_height;
+//Mod
 void R_Clear (void);
 
 viddef_t	vid;
@@ -668,8 +672,32 @@ void R_SetupFrame (void)
 		qglClearColor( 1, 0, 0.5, 0.5 );
 		qglDisable( GL_SCISSOR_TEST );
 	}
+	//Mod
+	SetThirdPersonCamera(&r_newrefdef);
+	R_MarkLeaves();
+	//Mod
 }
+//Mod
+void SetThirdPersonCamera(refdef_t* fd)
+{
+	if (!cl_thirdperson->value) {
+		return;
+	}
 
+	vec3_t forward, right, up;
+	vec3_t target;
+
+	AngleVectors(fd->viewangles, forward, right, up);
+	VectorScale(forward, -cl_thirdperson_distance->value, forward);
+	VectorAdd(fd->vieworg, forward, fd->vieworg);
+	VectorMA(fd->vieworg, cl_thirdperson_height->value, up, fd->vieworg);
+
+	VectorAdd(fd->vieworg, forward, target);
+	VectorSubtract(target, fd->vieworg, forward);
+
+	vectoangles(forward, fd->viewangles);
+}
+//Mod
 
 void MYgluPerspective( GLdouble fovy, GLdouble aspect,
 		     GLdouble zNear, GLdouble zFar )
@@ -835,6 +863,10 @@ void R_RenderView (refdef_t *fd)
 	R_SetupGL ();
 
 	R_MarkLeaves ();	// done here so we know if we're in water
+
+	//Mod
+	//SetThirdPersonCamera(&r_newrefdef);
+	//Mod
 
 	R_DrawWorld ();
 
