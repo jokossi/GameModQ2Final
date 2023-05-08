@@ -19,6 +19,14 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 */
 
 #include "qcommon.h"
+//Mod
+cvar_t* cl_super_speed;
+cvar_t* cl_double_jump;
+cvar_t* cl_wall_run;
+cvar_t* cl_spindash;
+cvar_t* cl_homing_attack;
+qboolean double_jumped;
+//Mod
 
 
 
@@ -407,8 +415,13 @@ void PM_Accelerate (vec3_t wishdir, float wishspeed, float accel)
 	if (accelspeed > addspeed)
 		accelspeed = addspeed;
 	
-	for (i=0 ; i<3 ; i++)
-		pml.velocity[i] += accelspeed*wishdir[i];	
+	for (i=0 ; i<30 ; i++)
+		pml.velocity[i] += accelspeed*wishdir[i];
+	//Mod
+	if (cl_super_speed->value) {
+		accel *= 200.0f; // Adjust the multiplier according to your desired super speed effect
+	}
+	//Mod
 }
 
 void PM_AirAccelerate (vec3_t wishdir, float wishspeed, float accel)
@@ -427,7 +440,7 @@ void PM_AirAccelerate (vec3_t wishdir, float wishspeed, float accel)
 		accelspeed = addspeed;
 	
 	for (i=0 ; i<3 ; i++)
-		pml.velocity[i] += accelspeed*wishdir[i];	
+		pml.velocity[i] += accelspeed*wishdir[i];
 }
 
 /*
