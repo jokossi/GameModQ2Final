@@ -22,6 +22,13 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include "client.h"
 
 cvar_t	*cl_nodelta;
+//Mod
+cvar_t* cl_super_speed;
+cvar_t* cl_double_jump;
+cvar_t* cl_wall_run;
+cvar_t* cl_spindash;
+cvar_t* cl_homing_attack;
+//Mod
 
 extern	unsigned	sys_frame_time;
 unsigned	frame_msec;
@@ -441,6 +448,13 @@ void CL_InitInput (void)
 	Cmd_AddCommand ("-klook", IN_KLookUp);
 
 	cl_nodelta = Cvar_Get ("cl_nodelta", "0", 0);
+	//Mod
+	cl_super_speed = Cvar_Get("cl_super_speed", "0", CVAR_ARCHIVE);
+	cl_double_jump = Cvar_Get("cl_double_jump", "0", CVAR_ARCHIVE);
+	cl_wall_run = Cvar_Get("cl_wall_run", "0", CVAR_ARCHIVE);
+	cl_spindash = Cvar_Get("cl_spindash", "0", CVAR_ARCHIVE);
+	cl_homing_attack = Cvar_Get("cl_homing_attack", "0", CVAR_ARCHIVE);
+	//Mod
 }
 
 
